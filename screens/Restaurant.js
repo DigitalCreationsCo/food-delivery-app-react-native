@@ -68,6 +68,18 @@ export default function Restaurant({ route, navigation }) {
     return 0
   }
 
+  function getBasketItemCount() {
+    let itemCount = orderItems.reduce((a, b) => a + (b.qty || 0), 0)
+
+    return itemCount
+  }
+
+  function sumOrder() {
+    let total = orderItems.reduce((a, b) => a + (b.total || 0), 0)
+
+    return total.toFixed(2)
+  }
+
   function renderHeader() {
     return (
       <View style={{ flexDirection: 'row'}}>
@@ -328,8 +340,8 @@ export default function Restaurant({ route, navigation }) {
               borderBottomWidth: 1
             }}
           >
-            <Text style={{ ...FONTS.h3 }}>items in Cart</Text>
-            <Text style={{ ...FONTS.h3 }}>$45</Text>
+            <Text style={{ ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
+            <Text style={{ ...FONTS.h3 }}>${sumOrder()}</Text>
           </View>
 
           <View
@@ -383,6 +395,10 @@ export default function Restaurant({ route, navigation }) {
                 alignItems: 'center',
                 borderRadius: SIZES.radius
               }}
+              onPress={() => navigation.navigate("Order", {
+                restaurant: restaurant,
+                currentLocation: currentLocation
+              })}
             >
               <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Order</Text>
             </TouchableOpacity>

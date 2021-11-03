@@ -51,5 +51,7 @@
 	<false/>
   <key>UIStatusBarStyle</key>
   <string>UIStatusBarStyleDefault</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Location is used to send deliveries to user coordinate point</string>
 </dict>
 </plist>
