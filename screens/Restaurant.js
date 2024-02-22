@@ -32,7 +32,7 @@ export default function Restaurant({ route, navigation }) {
     if (action == "+") {
       if(item.length > 0) {
         let newQty = item[0].qty + 1
-        item[0].qty = newQty
+   sd     item[0].qty = newQty
         item[0].total = item[0].qty * price
       } else {
         const newItem = {
